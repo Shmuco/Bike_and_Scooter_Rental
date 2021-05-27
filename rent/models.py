@@ -6,13 +6,16 @@ from django.db import models
 # Create your models here.
 
 class Customer(models.Model):
-    first_name = models.CharField(max_length=40)
-    last_name = models.CharField(max_length=40)
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
     email = models.EmailField()
-    phone_number = models.CharField(max_length=40)
-    address = models.CharField(max_length=40)
-    city = models.CharField(max_length=40)
-    country  = models.CharField(max_length=40)
+    phone_number = models.CharField(max_length=200)
+    address = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    country  = models.CharField(max_length=200)
+    
+    # def __str__(self):
+    #     return f'{self.first_name} {self.last_name}'
 
 
 class Vehicle(models.Model):
@@ -20,14 +23,25 @@ class Vehicle(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     real_cost = models.FloatField()
     vehicle_size = models.ForeignKey('rent.VehicleSize', on_delete=models.CASCADE)
+    avliable = models.BooleanField(default= True)
+
+    
+    def __str__(self):
+        return self.vehicle_type.name
 
 
 class VehicleType(models.Model):
-    name = models.CharField(max_length=40)
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
 
 
 class VehicleSize(models.Model):
-    name = models.CharField(max_length=40)
+    name = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
 
 
 class Rental(models.Model):

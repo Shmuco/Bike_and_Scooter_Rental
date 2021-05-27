@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Rentals</h1>
+{% for i in all_rentals %}
+<ul>
+    
+        <li>Customer: {rentals.customer}</li>
+        <li>Rental Date: {rentals.rental_date}</li>
+        <li>Return Date: {rentals.return_date}</li>
+        <li>Vehicle: {rentals.vehicle}</li>
+    <hr>
+    {% endfor %}
+</ul>
+{% endblock %}
